@@ -45,7 +45,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:938541925653:android:35530d9d5e775acd9e551c",
         "android_client_info": {
-          "package_name": "com.example.reddit_clone_provider"
+          "package_name": "com.example.reddit_clone"
         }
       },
       "oauth_client": [
