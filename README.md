@@ -1,4 +1,4 @@
-# reddit_clone_provider
+# reddit_clone
 
 A new Flutter project.
 

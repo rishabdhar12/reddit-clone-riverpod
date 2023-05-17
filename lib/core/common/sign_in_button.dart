@@ -7,14 +7,14 @@ import 'package:reddit_clone_provider/theme/palette.dart';
 class GoogleSignIn extends ConsumerWidget {
   const GoogleSignIn({super.key});
 
-  void googleSignIn(WidgetRef ref) {
-    ref.watch(authControllerProvider).signInGoogle();
+  void googleSignIn(WidgetRef ref, BuildContext context) {
+    ref.watch(authControllerProvider.notifier).signInGoogle(context);
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton.icon(
-      onPressed: () => googleSignIn(ref),
+      onPressed: () => googleSignIn(ref, context),
       icon: Image.asset(
         Constants.googlePath,
         height: 50,
