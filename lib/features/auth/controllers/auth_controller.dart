@@ -33,7 +33,7 @@ class AuthController extends StateNotifier<bool> {
 
     state = false; // isLoading = false,
 
-    // throw error/success snackbar
+    // throw error/success
     user.fold(
       (l) => showSnackBar(context, l.failureMessage),
       (userModel) =>
