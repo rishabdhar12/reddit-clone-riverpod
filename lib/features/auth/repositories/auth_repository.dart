@@ -36,6 +36,9 @@ class AuthRepository {
   CollectionReference get _users =>
       _firebaseFirestore.collection(FirebaseConstants.usersCollection);
 
+  // Notifies about changes to the user's sign-in state (such as sign-in or sign-out)
+  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
+
   // google sign in repository
   FutureEither<UserModel> googleSignIn() async {
     try {
@@ -84,9 +87,6 @@ class AuthRepository {
       return left(Failure("Google sign in ${e.toString()}"));
     }
   }
-
-  // Notifies about changes to the user's sign-in state (such as sign-in or sign-out)
-  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 
   // get user stream
   Stream<UserModel> getUser(String uid) {
