@@ -34,8 +34,10 @@ class AuthController extends StateNotifier<bool> {
   AuthController({required AuthRepository authRepository, required Ref ref})
       : _authRepository = authRepository,
         _ref = ref,
-        super(false) // isLoading
-  ;
+        super(false); // isLoading
+
+  // authentication state change stream
+  Stream<User?> get authStateChange => _authRepository.authStateChange;
 
   // google signin controller
   void signInGoogle(BuildContext context) async {
@@ -52,9 +54,6 @@ class AuthController extends StateNotifier<bool> {
           _ref.read(userProvider.notifier).update((state) => userModel),
     );
   }
-
-  // authentication state change stream
-  Stream<User?> get authStateChange => _authRepository.authStateChange;
 
   // get user stream
   Stream<UserModel> getUser(String uid) {
