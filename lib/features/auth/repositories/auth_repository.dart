@@ -10,8 +10,6 @@ import 'package:reddit_clone_provider/core/providers/firebase_providers.dart';
 import 'package:reddit_clone_provider/core/type_defs.dart';
 import 'package:reddit_clone_provider/models/user_model.dart';
 
-
-
 // auth repository provider
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
@@ -86,6 +84,9 @@ class AuthRepository {
       return left(Failure("Google sign in ${e.toString()}"));
     }
   }
+
+  // Notifies about changes to the user's sign-in state (such as sign-in or sign-out)
+  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 
   // get user stream
   Stream<UserModel> getUser(String uid) {
