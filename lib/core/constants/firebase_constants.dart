@@ -3,4 +3,6 @@ class FirebaseConstants {
   static const commentsCollection = "comments";
   static const postsCollection = "posts";
   static const communitiesCollection = "communities";
+  static const communitiesProfilePath = 'communities/profile';
+  static const communitiesBannerPath = 'communities/banner';
 }

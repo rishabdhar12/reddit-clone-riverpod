@@ -72,4 +72,16 @@ class CommunityRepository {
       rethrow;
     }
   }
+
+  // edit community
+  FutureVoid editCommunity({required Community community}) async {
+    try {
+      return right(
+          _communitiesCollection.doc(community.name).update(community.toMap()));
+    } on FirebaseException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 }
