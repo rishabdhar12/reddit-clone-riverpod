@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone_provider/features/auth/controllers/auth_controller.dart';
+import 'package:reddit_clone_provider/features/home/delegates/search_community_delegate.dart';
 import 'package:reddit_clone_provider/features/home/screens/drawers/community_list_drawer.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -15,7 +16,11 @@ class HomeScreen extends ConsumerWidget {
         centerTitle: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: SearchCommunityDelegate(ref: ref));
+            },
             icon: const Icon(Icons.search),
           ),
           IconButton(
@@ -26,8 +31,7 @@ class HomeScreen extends ConsumerWidget {
           )
         ],
       ),
-      drawer: const CommunityListDrawer(
-      ),
+      drawer: const CommunityListDrawer(),
     );
   }
 }
