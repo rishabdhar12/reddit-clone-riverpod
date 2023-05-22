@@ -26,6 +26,14 @@ final getCommunityByNameStreamFamily =
       .getCommunityByName(name: name);
 });
 
+// search community stream provider family.
+final searchCommunityStreamProviderFamily =
+    StreamProvider.family((ref, String query) {
+  return ref
+      .watch(communityControllerProvider.notifier)
+      .searchCommunities(query: query);
+});
+
 // community controller provider
 final communityControllerProvider =
     StateNotifierProvider<CommunityController, bool>((ref) {
@@ -133,5 +141,10 @@ class CommunityController extends StateNotifier<bool> {
       showSnackBar(context, "Community updated");
       Routemaster.of(context).pop();
     });
+  }
+
+  // get streamed list of communities
+  Stream<List<Community>> searchCommunities({required String query}) {
+    return _communityRepository.searchCommunities(query: query);
   }
 }
