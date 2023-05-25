@@ -106,4 +106,36 @@ class CommunityRepository {
       return communities;
     });
   }
+
+  // join community
+  FutureVoid joinCommunity(
+      {required String communityName, required String uid}) async {
+    try {
+      return right(
+        _communitiesCollection.doc(communityName).update({
+          'members': FieldValue.arrayUnion([uid]),
+        }),
+      );
+    } on FirebaseException {
+      rethrow;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
+  // leave community
+  FutureVoid leaveCommunity(
+      {required String communityName, required String uid}) async {
+    try {
+      return right(
+        _communitiesCollection.doc(communityName).update({
+          'members': FieldValue.arrayRemove([uid]),
+        }),
+      );
+    } on FirebaseException {
+      rethrow;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 }
