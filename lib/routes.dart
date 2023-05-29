@@ -1,6 +1,7 @@
 // logged out route
 import 'package:flutter/material.dart';
 import 'package:reddit_clone_provider/features/auth/screens/login_screen.dart';
+import 'package:reddit_clone_provider/features/community/screens/add_moderators.dart';
 import 'package:reddit_clone_provider/features/community/screens/community_screen.dart';
 import 'package:reddit_clone_provider/features/community/screens/create_community_screen.dart';
 import 'package:reddit_clone_provider/features/community/screens/edit_community_screen.dart';
@@ -27,6 +28,11 @@ final loggedInRoute = RouteMap(routes: {
       ),
   '/edit-community/:name': (route) => MaterialPage(
         child: EditCommunityScreen(
+          name: route.pathParameters['name']!,
+        ),
+      ),
+  '/add-mods/:name': (route) => MaterialPage(
+        child: AddModsScreen(
           name: route.pathParameters['name']!,
         ),
       ),
