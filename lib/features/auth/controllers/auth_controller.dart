@@ -22,7 +22,7 @@ final authStateChangeProvider = StreamProvider((ref) {
   return authStateChange.authStateChange;
 });
 
-final getUserProvider = StreamProvider.autoDispose.family((ref, String uid) {
+final getUserProvider = StreamProvider.family((ref, String uid) {
   final getUser = ref.watch(authControllerProvider.notifier);
   return getUser.getUser(uid);
 });
